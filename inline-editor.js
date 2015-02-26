@@ -7,10 +7,13 @@ $.fn.inlineEditor = function() {
 		$e.append('<span class="spinner" style="display: none;"><i class="fa fa-spin fa-spinner"></i> </span>');
 		
 		$e.find('.display:first').click(function() {
-			$e.find('.edit').show();
-			$e.find('.edit').focus();
+			$e.find('.edit:first').show();
+			setTimeout(function() {
+				$e.find('.edit:first').focus();
+				$e.find('.edit:first').select();
+			}, 500);
 			$e.find('.edit-btn, .display').hide();
-			$e.find('.edit').val($e.find('.display:first').text());
+			$e.find('.edit').val($e.find('.display:first').text().trim());
 		});
 		
 		$e.find('.edit:first').change(function() {
